@@ -5,6 +5,19 @@ from sklearn import datasets
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+st.subheader("**Diabetes Data**")
+db = datasets.load_diabetes()
+df = pd.DataFrame(db.data, columns=db.feature_names)
+
+# 显示数据表
+st.dataframe(df, use_container_width=True)
+
+# **新增：绘制年龄分布的直方图**
+fig, ax = plt.subplots(figsize=(6, 3))
+df['age'].hist(bins=10, ax=ax)
+fig.suptitle("Age Distribution")
+st.pyplot(fig)
+
 # Set page config
 apptitle = 'DSSI Toy App'
 
